@@ -492,6 +492,7 @@ Plug 'ncm2/ncm2'
 Plug 'roxma/nvim-yarp'
 Plug 'ncm2/ncm2-bufword'
 Plug 'ncm2/ncm2-path'
+Plug 'ncm2/ncm2-jedi'
 
 call plug#end()
 "
@@ -1200,8 +1201,10 @@ let g:php_folding = 1
 "vmap <LEADER>cn g>
 "nmap <LEADER>cu g<c
 "vmap <LEADER>cu g<
-"
-"
+autocmd BufEnter * call ncm2#enable_for_buffer()
+set completeopt=menuone,preview
+"let g:python3_host_prog="/usr/local/bin/python3"
+
 "" ===================== End of Plugin Settings =====================
 "
 "
