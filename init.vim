@@ -226,7 +226,7 @@ noremap tml :+tabmove<CR>
 " Snippets
 "source $XDG_CONFIG_HOME/nvim/md-snippets.vim
 " auto spell
-autocmd BufRead,BufNewFile *.md setlocal spell
+"autocmd BufRead,BufNewFile *.md setlocal spell
 
 
 " ===
@@ -416,10 +416,10 @@ Plug 'tweekmonster/braceless.vim'
 ""Plug 'keith/swift.vim'
 "
 " Markdown
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install_sync() }, 'for' :['markdown', 'vim-plug'] }
-Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle' }
-Plug 'mzlogin/vim-markdown-toc', { 'for': ['gitignore', 'markdown'] }
-Plug 'dkarter/bullets.vim'
+"Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install_sync() }, 'for' :['markdown', 'vim-plug'] }
+"Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle' }
+"Plug 'mzlogin/vim-markdown-toc', { 'for': ['gitignore', 'markdown'] }
+"Plug 'dkarter/bullets.vim'
 
 "" Other filetypes
 "Plug 'jceb/vim-orgmode', {'for': ['vim-plug', 'org']}
@@ -630,27 +630,27 @@ call plug#end()
 " ===
 " === MarkdownPreview
 " ===
-let g:mkdp_auto_start = 0
-let g:mkdp_auto_close = 1
-let g:mkdp_refresh_slow = 0
-let g:mkdp_command_for_global = 0
-let g:mkdp_open_to_the_world = 0
-let g:mkdp_open_ip = ''
-let g:mkdp_echo_preview_url = 0
-let g:mkdp_browserfunc = ''
-let g:mkdp_preview_options = {
-			\ 'mkit': {},
-			\ 'katex': {},
-			\ 'uml': {},
-			\ 'maid': {},
-			\ 'disable_sync_scroll': 0,
-			\ 'sync_scroll_type': 'middle',
-			\ 'hide_yaml_meta': 1
-			\ }
-let g:mkdp_markdown_css = ''
-let g:mkdp_highlight_css = ''
-let g:mkdp_port = ''
-let g:mkdp_page_title = '「${name}」'
+"let g:mkdp_auto_start = 0
+"let g:mkdp_auto_close = 1
+"let g:mkdp_refresh_slow = 0
+"let g:mkdp_command_for_global = 0
+"let g:mkdp_open_to_the_world = 0
+"let g:mkdp_open_ip = ''
+"let g:mkdp_echo_preview_url = 0
+"let g:mkdp_browserfunc = ''
+"let g:mkdp_preview_options = {
+"			\ 'mkit': {},
+"			\ 'katex': {},
+"			\ 'uml': {},
+"			\ 'maid': {},
+"			\ 'disable_sync_scroll': 0,
+"			\ 'sync_scroll_type': 'middle',
+"			\ 'hide_yaml_meta': 1
+"			\ }
+"let g:mkdp_markdown_css = ''
+"let g:mkdp_highlight_css = ''
+"let g:mkdp_port = ''
+"let g:mkdp_page_title = '「${name}」'
 
 
 "" ===
@@ -806,8 +806,8 @@ let g:mkdp_page_title = '「${name}」'
 " ===
 " === Bullets.vim
 " ===
- let g:bullets_set_mappings = 0
-let g:bullets_enabled_file_types = [
+"let g:bullets_set_mappings = 0
+"let g:bullets_enabled_file_types = [
 			\ 'markdown',
 			\ 'text',
 			\ 'gitcommit',
@@ -1129,11 +1129,11 @@ let g:php_folding = 1
 " ===
 " === vim-markdown-toc
 " ===
-let g:vmt_auto_update_on_save = 0
-let g:vmt_dont_insert_fence = 1
-let g:vmt_cycle_list_item_markers = 1
-let g:vmt_fence_text = 'TOC'
-let g:vmt_fence_closing_text = '/TOC'
+"let g:vmt_auto_update_on_save = 0
+"let g:vmt_dont_insert_fence = 1
+"let g:vmt_cycle_list_item_markers = 1
+"let g:vmt_fence_text = 'TOC'
+"let g:vmt_fence_closing_text = '/TOC'
 
 
 "" ===
