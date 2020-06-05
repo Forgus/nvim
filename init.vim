@@ -1202,9 +1202,15 @@ let g:php_folding = 1
 "nmap <LEADER>cu g<c
 "vmap <LEADER>cu g<
 autocmd BufEnter * call ncm2#enable_for_buffer()
-set completeopt=menuone,preview
-"let g:python3_host_prog="/usr/local/bin/python3"
-
+set completeopt=menuone,preview,noinsert
+set shortmess+=c
+inoremap <c-c> <ESC>
+" 延迟弹窗,这样提示更加流畅
+let ncm2#popup_delay = 5
+"使用tab键向下选择弹框菜单
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+"模糊匹配模式,详情请输入:help ncm2查看相关文档
+let g:ncm2#matcher = 'substrfuzzy'
 "" ===================== End of Plugin Settings =====================
 "
 "
