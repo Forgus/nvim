@@ -112,6 +112,7 @@ let mapleader=" "
 noremap Q :q<CR>
 noremap <C-q> :qa<CR>
 noremap S :w<CR>
+noremap R :source $MYVIMRC<CR>
 
 " Open the vimrc file anytime
 noremap <LEADER>rc :e ~/.config/nvim/init.vim<CR>
@@ -328,7 +329,7 @@ call plug#begin('~/.config/nvim/plugged')
 "" Pretty Dress
 "Plug 'theniceboy/eleline.vim'
 "Plug 'bling/vim-bufferline'
-""Plug 'liuchengxu/space-vim-theme'
+Plug 'liuchengxu/space-vim-dark'
 ""Plug 'morhetz/gruvbox'
 ""Plug 'ayu-theme/ayu-vim'
 ""Plug 'rakr/vim-one'
@@ -1201,16 +1202,30 @@ let g:php_folding = 1
 "vmap <LEADER>cn g>
 "nmap <LEADER>cu g<c
 "vmap <LEADER>cu g<
+" === 
+" === ncm2
+" ===
 autocmd BufEnter * call ncm2#enable_for_buffer()
-set completeopt=menuone,preview,noinsert
+set completeopt=menuone,noinsert,noselect
+au TextChangedI * call ncm2#auto_trigger()
 set shortmess+=c
 inoremap <c-c> <ESC>
 " 延迟弹窗,这样提示更加流畅
-let ncm2#popup_delay = 5
+"let ncm2#popup_delay = 5
 "使用tab键向下选择弹框菜单
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 "模糊匹配模式,详情请输入:help ncm2查看相关文档
 let g:ncm2#matcher = 'substrfuzzy'
+" ===
+" === space-vim-dark
+" ===
+colorscheme space-vim-dark
+color space-vim-dark
+"set termguicolors
+hi Normal     ctermbg=NONE guibg=NONE
+hi LineNr     ctermbg=NONE guibg=NONE
+hi SignColumn ctermbg=NONE guibg=NONE
 "" ===================== End of Plugin Settings =====================
 "
 "
