@@ -112,7 +112,6 @@ let mapleader=" "
 noremap Q :q<CR>
 noremap <C-q> :qa<CR>
 noremap S :w<CR>
-noremap R :source $MYVIMRC<CR>
 
 " Open the vimrc file anytime
 noremap <LEADER>rc :e ~/.config/nvim/init.vim<CR>
@@ -327,9 +326,9 @@ call plug#begin('~/.config/nvim/plugged')
 "Plug 'junkblocker/git-time-lapse'
 "
 "" Pretty Dress
-"Plug 'theniceboy/eleline.vim'
+Plug 'theniceboy/vim-deus'
 "Plug 'bling/vim-bufferline'
-Plug 'liuchengxu/space-vim-dark'
+"Plug 'liuchengxu/space-vim-dark'
 ""Plug 'morhetz/gruvbox'
 ""Plug 'ayu-theme/ayu-vim'
 ""Plug 'rakr/vim-one'
@@ -344,11 +343,9 @@ Plug 'liuchengxu/space-vim-dark'
 "" File navigation
 ""Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 ""Plug 'Xuyuanp/nerdtree-git-plugin'
-"Plug 'junegunn/fzf.vim'
-""Plug 'yuki-ycino/fzf-preview.vim'
-""Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
-""Plug 'junegunn/fzf'
-"Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
+Plug 'junegunn/fzf.vim'
+Plug 'kevinhwang91/rnvimr', {'do': 'make install'}
+Plug 'airblade/vim-rooter'
 "
 "" Taglist
 "Plug 'liuchengxu/vista.vim'
@@ -362,8 +359,13 @@ Plug 'liuchengxu/space-vim-dark'
 "" Error checking, handled by coc
 "
 "" Auto Complete
-"Plug 'neoclide/coc.nvim', {'branch': 'release'}
-"Plug 'wellle/tmux-complete.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'wellle/tmux-complete.vim'
+"Plug 'ncm2/ncm2'
+"Plug 'roxma/nvim-yarp'
+"Plug 'ncm2/ncm2-bufword'
+"Plug 'ncm2/ncm2-path'
+"Plug 'ncm2/ncm2-jedi'
 "
 " Snippets
 " Plug 'SirVer/ultisnips'
@@ -492,11 +494,6 @@ Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
 "" Dependencies
 "Plug 'MarcWeber/vim-addon-mw-utils'
 "Plug 'kana/vim-textobj-user'
-Plug 'ncm2/ncm2'
-Plug 'roxma/nvim-yarp'
-Plug 'ncm2/ncm2-bufword'
-Plug 'ncm2/ncm2-path'
-Plug 'ncm2/ncm2-jedi'
 
 call plug#end()
 "
@@ -508,8 +505,8 @@ call plug#end()
 " ===
 " === Dress up my vim
 " ===
-"set termguicolors " enable true colors support
-"let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+set termguicolors " enable true colors support
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 ""set background=dark
 ""let ayucolor="mirage"
 ""let g:oceanic_next_terminal_bold = 1
@@ -518,7 +515,7 @@ call plug#end()
 "
 ""color dracula
 ""color one
-"color deus
+color deus
 ""color gruvbox
 ""let ayucolor="light"
 ""color ayu
@@ -526,7 +523,7 @@ call plug#end()
 ""set background=light
 ""set cursorcolumn
 "
-"hi NonText ctermfg=gray guifg=grey10
+hi NonText ctermfg=gray guifg=grey10
 ""hi SpecialKey ctermfg=blue guifg=grey70
 "
 "" ===================== Start of Plugin Settings =====================
@@ -556,82 +553,82 @@ call plug#end()
 "" === vim-fugitive
 "" ===
 "nnoremap gb :Gblame<CR>
-"
-"
-"" ===
-"" === coc
-"" ===
-"" fix the most annoying bug that coc has
-""silent! au BufEnter,BufRead,BufNewFile * silent! unmap if
-"let g:coc_global_extensions = ['coc-python', 'coc-vimlsp', 'coc-html', 'coc-json', 'coc-css', 'coc-tsserver', 'coc-snippets', 'coc-yank', 'coc-gitignore', 'coc-vimlsp', 'coc-stylelint', 'coc-tslint', 'coc-lists', 'coc-git', 'coc-explorer', 'coc-pyright', 'coc-sourcekit', 'coc-translator', 'coc-flutter', 'coc-todolist', 'coc-yaml', 'coc-tasks', 'coc-actions', 'coc-diagnostic', 'coc-prettier', 'coc-syntax', 'coc-eslint']
-""set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
-""nmap <silent> <TAB> <Plug>(coc-range-select)
-""xmap <silent> <TAB> <Plug>(coc-range-select)
-"" use <tab> for trigger completion and navigate to the next complete item
-"function! s:check_back_space() abort
-"	let col = col('.') - 1
-"	return !col || getline('.')[col - 1]	=~ '\s'
-"endfunction
-"inoremap <silent><expr> <TAB>
-"	\ pumvisible() ? "\<C-n>" :
-"	\ <SID>check_back_space() ? "\<TAB>" :
-"	\ coc#refresh()
-"inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-"inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-"function! s:check_back_space() abort
-"	let col = col('.') - 1
-"	return !col || getline('.')[col - 1]  =~# '\s'
-"endfunction
-"inoremap <silent><expr> <c-space> coc#refresh()
-"inoremap <silent><expr> <c-o> coc#refresh()
-"
-"" Open up coc-commands
-"nnoremap <c-c> :CocCommand<CR>
-"" Text Objects
-"xmap kf <Plug>(coc-funcobj-i)
-"xmap af <Plug>(coc-funcobj-a)
-"omap kf <Plug>(coc-funcobj-i)
-"omap af <Plug>(coc-funcobj-a)
-"" Useful commands
-"nnoremap <silent> <space>y :<C-u>CocList -A --normal yank<cr>
-"nmap <silent> gd <Plug>(coc-definition)
-"nmap <silent> gy <Plug>(coc-type-definition)
-"nmap <silent> gi <Plug>(coc-implementation)
-"nmap <silent> gr <Plug>(coc-references)
-"nmap <leader>rn <Plug>(coc-rename)
-"nmap tt :CocCommand explorer<CR>
-"" coc-translator
-"nmap ts <Plug>(coc-translator-p)
-"" Remap for do codeAction of selected region
-"function! s:cocActionsOpenFromSelected(type) abort
-"  execute 'CocCommand actions.open ' . a:type
-"endfunction
-"xmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
-"nmap <silent> <leader>a :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR>g@
-"" coctodolist
-"nnoremap <leader>tn :CocCommand todolist.create<CR>
-"nnoremap <leader>tl :CocList todolist<CR>
-"nnoremap <leader>tu :CocCommand todolist.download<CR>:CocCommand todolist.upload<CR>
-"" coc-tasks
-"noremap <silent> <leader>ts :CocList tasks<CR>
-"" coc-snippets
-"" Use <C-l> for trigger snippet expand.
-"imap <C-l> <Plug>(coc-snippets-expand)
-"
-"" Use <C-j> for select text for visual placeholder of snippet.
-"vmap <C-e> <Plug>(coc-snippets-select)
-"
-"" Use <C-j> for jump to next placeholder, it's default of coc.nvim
-"let g:coc_snippet_next = '<c-e>'
-"
-"" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
-"let g:coc_snippet_prev = '<c-n>'
-"
-"" Use <C-j> for both expand and jump (make expand higher priority.)
-"imap <C-e> <Plug>(coc-snippets-expand-jump)
-"
-"
-"
+
+
+" ===
+" === coc
+" ===
+" fix the most annoying bug that coc has
+"silent! au BufEnter,BufRead,BufNewFile * silent! unmap if
+let g:coc_global_extensions = ['coc-python', 'coc-vimlsp', 'coc-html', 'coc-json', 'coc-css', 'coc-tsserver', 'coc-snippets', 'coc-yank', 'coc-gitignore', 'coc-vimlsp', 'coc-stylelint', 'coc-tslint', 'coc-lists', 'coc-git', 'coc-explorer', 'coc-pyright', 'coc-sourcekit', 'coc-translator', 'coc-flutter', 'coc-todolist', 'coc-yaml', 'coc-tasks', 'coc-actions', 'coc-diagnostic', 'coc-prettier', 'coc-syntax', 'coc-eslint']
+"set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+"nmap <silent> <TAB> <Plug>(coc-range-select)
+"xmap <silent> <TAB> <Plug>(coc-range-select)
+" use <tab> for trigger completion and navigate to the next complete item
+function! s:check_back_space() abort
+	let col = col('.') - 1
+	return !col || getline('.')[col - 1]	=~ '\s'
+endfunction
+inoremap <silent><expr> <TAB>
+	\ pumvisible() ? "\<C-n>" :
+	\ <SID>check_back_space() ? "\<TAB>" :
+	\ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+function! s:check_back_space() abort
+	let col = col('.') - 1
+	return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+inoremap <silent><expr> <c-space> coc#refresh()
+inoremap <silent><expr> <c-o> coc#refresh()
+
+" Open up coc-commands
+nnoremap <c-c> :CocCommand<CR>
+" Text Objects
+xmap kf <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap kf <Plug>(coc-funcobj-i)
+omap af <Plug>(coc-funcobj-a)
+" Useful commands
+nnoremap <silent> <space>y :<C-u>CocList -A --normal yank<cr>
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+nmap <leader>rn <Plug>(coc-rename)
+nmap tt :CocCommand explorer<CR>
+" coc-translator
+nmap ts <Plug>(coc-translator-p)
+" Remap for do codeAction of selected region
+function! s:cocActionsOpenFromSelected(type) abort
+  execute 'CocCommand actions.open ' . a:type
+endfunction
+xmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
+nmap <silent> <leader>a :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR>g@
+" coctodolist
+nnoremap <leader>tn :CocCommand todolist.create<CR>
+nnoremap <leader>tl :CocList todolist<CR>
+nnoremap <leader>tu :CocCommand todolist.download<CR>:CocCommand todolist.upload<CR>
+" coc-tasks
+noremap <silent> <leader>ts :CocList tasks<CR>
+" coc-snippets
+" Use <C-l> for trigger snippet expand.
+imap <C-l> <Plug>(coc-snippets-expand)
+
+" Use <C-j> for select text for visual placeholder of snippet.
+vmap <C-e> <Plug>(coc-snippets-select)
+
+" Use <C-j> for jump to next placeholder, it's default of coc.nvim
+let g:coc_snippet_next = '<c-e>'
+
+" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+let g:coc_snippet_prev = '<c-n>'
+
+" Use <C-j> for both expand and jump (make expand higher priority.)
+imap <C-e> <Plug>(coc-snippets-expand-jump)
+
+
+
 " ===
 " === MarkdownPreview
 " ===
@@ -1117,23 +1114,29 @@ let g:php_folding = 1
 "let g:vmt_cycle_list_item_markers = 1
 "let g:vmt_fence_text = 'TOC'
 "let g:vmt_fence_closing_text = '/TOC'
-
-
-"" ===
-"" === rnvimr
-"" ===
-"let g:rnvimr_ex_enable = 1
-"let g:rnvimr_pick_enable = 1
-"nnoremap <silent> R :RnvimrSync<CR>:RnvimrToggle<CR><C-\><C-n>:RnvimrResize 0<CR>
-"let g:rnvimr_layout = { 'relative': 'editor',
-"            \ 'width': &columns,
-"            \ 'height': &lines,
-"            \ 'col': 0,
-"            \ 'row': 0,
-"            \ 'style': 'minimal' }
-"let g:rnvimr_presets = [{'width': 1.0, 'height': 1.0}]
-"
-"
+" ===
+" === rnvimr
+" ===
+let g:rnvimr_ex_enable = 1
+let g:rnvimr_pick_enable = 1
+let g:rnvimr_draw_border = 0
+"let g:rnvimr_bw_enable = 1
+highlight link RnvimrNormal CursorLine
+nnoremap <silent> R :RnvimrSync<CR>:RnvimrToggle<CR><C-\><C-n>:RnvimrResize 0<CR>
+let g:rnvimr_action = {
+            \ '<C-t>': 'NvimEdit tabedit',
+            \ '<C-x>': 'NvimEdit split',
+            \ '<C-v>': 'NvimEdit vsplit',
+            \ 'gw': 'JumpNvimCwd',
+            \ 'yw': 'EmitRangerCwd'
+            \ }
+let g:rnvimr_layout = { 'relative': 'editor',
+            \ 'width': &columns,
+            \ 'height': &lines,
+            \ 'col': 0,
+            \ 'row': 0,
+            \ 'style': 'minimal' }
+let g:rnvimr_presets = [{'width': 1.0, 'height': 1.0}]
 "" ===
 "" === vim-subversive
 "" ===
@@ -1186,27 +1189,27 @@ let g:php_folding = 1
 " === 
 " === ncm2
 " ===
-autocmd BufEnter * call ncm2#enable_for_buffer()
-set completeopt=menuone,noinsert,noselect
-au TextChangedI * call ncm2#auto_trigger()
-set shortmess+=c
-inoremap <c-c> <ESC>
+"autocmd BufEnter * call ncm2#enable_for_buffer()
+"set completeopt=menuone,noinsert,noselect
+"au TextChangedI * call ncm2#auto_trigger()
+"set shortmess+=c
+"inoremap <c-c> <ESC>
 " 延迟弹窗,这样提示更加流畅
 "let ncm2#popup_delay = 5
 "使用tab键向下选择弹框菜单
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+"inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+"inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 "模糊匹配模式,详情请输入:help ncm2查看相关文档
-let g:ncm2#matcher = 'substrfuzzy'
+"let g:ncm2#matcher = 'substrfuzzy'
 " ===
 " === space-vim-dark
 " ===
-colorscheme space-vim-dark
-color space-vim-dark
-set termguicolors
-hi Normal     ctermbg=NONE guibg=NONE
-hi LineNr     ctermbg=NONE guibg=NONE
-hi SignColumn ctermbg=NONE guibg=NONE
+"colorscheme space-vim-dark
+"color space-vim-dark
+"set termguicolors
+"hi Normal     ctermbg=NONE guibg=NONE
+"hi LineNr     ctermbg=NONE guibg=NONE
+"hi SignColumn ctermbg=NONE guibg=NONE
 "" ===================== End of Plugin Settings =====================
 "
 "
