@@ -293,7 +293,7 @@ func! CompileRunGcc()
 	elseif &filetype == 'html'
 		silent! exec "!".g:mkdp_browser." % &"
 	elseif &filetype == 'markdown'
-		exec "MarkdownPreview"
+		exec "ComposerStart"
 	elseif &filetype == 'tex'
 		silent! exec "VimtexStop"
 		silent! exec "VimtexCompile"
@@ -417,6 +417,15 @@ Plug 'tweekmonster/braceless.vim'
 ""Plug 'keith/swift.vim'
 "
 " Markdown
+function! BuildComposer(info)
+  if a:info.status != 'unchanged' || a:info.force
+    if has('nvim')
+      !cargo build --release --locked
+    else
+      !cargo build --release --locked --no-default-features --features json-rpc
+    endif
+  endif
+endfunction
 Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
 "
 "" Editor Enhancement
@@ -626,16 +635,7 @@ call plug#end()
 " ===
 " === MarkdownPreview
 " ===
-function! BuildComposer(info)
-  if a:info.status != 'unchanged' || a:info.force
-    if has('nvim')
-      !cargo build --release --locked
-    else
-      !cargo build --release --locked --no-default-features --features json-rpc
-    endif
-  endif
-endfunction
-let g:markdown_composer_autostart = 1
+let g:markdown_composer_autostart = 0
 "" ===
 "" === vim-table-mode
 "" ===
