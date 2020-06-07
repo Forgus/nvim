@@ -225,9 +225,9 @@ noremap tml :+tabmove<CR>
 " === Markdown Settings
 " ===
 " Snippets
-"source $XDG_CONFIG_HOME/nvim/md-snippets.vim
+source $HOME/.config/nvim/md-snippets.vim
 " auto spell
-"autocmd BufRead,BufNewFile *.md setlocal spell
+autocmd BufRead,BufNewFile *.md setlocal spell
 
 
 " ===
@@ -269,7 +269,7 @@ noremap \s :%s//g<left><left>
 noremap <LEADER>sw :set wrap<CR>
 
 " Compile function
-noremap r :call CompileRunGcc()<CR>
+noremap <LEADER>e :call CompileRunGcc()<CR>
 func! CompileRunGcc()
 	exec "w"
 	if &filetype == 'c'
@@ -417,13 +417,7 @@ Plug 'tweekmonster/braceless.vim'
 ""Plug 'keith/swift.vim'
 "
 " Markdown
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install_sync() }, 'for' :['markdown', 'vim-plug'] }
-"Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle' }
-"Plug 'mzlogin/vim-markdown-toc', { 'for': ['gitignore', 'markdown'] }
-"Plug 'dkarter/bullets.vim'
-
-"" Other filetypes
-"Plug 'jceb/vim-orgmode', {'for': ['vim-plug', 'org']}
+Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
 "
 "" Editor Enhancement
 ""Plug 'Raimondi/delimitMate'
@@ -632,36 +626,22 @@ call plug#end()
 " ===
 " === MarkdownPreview
 " ===
-let g:mkdp_auto_start = 0
-let g:mkdp_auto_close = 1
-let g:mkdp_refresh_slow = 0
-let g:mkdp_command_for_global = 0
-let g:mkdp_open_to_the_world = 0
-let g:mkdp_open_ip = '127.0.0.1'
-let g:mkdp_browser = 'firefox'
-let g:mkdp_echo_preview_url = 0
-let g:mkdp_browserfunc = ''
-let g:mkdp_preview_options = {
-			\ 'mkit': {},
-			\ 'katex': {},
-			\ 'uml': {},
-			\ 'maid': {},
-			\ 'disable_sync_scroll': 0,
-			\ 'sync_scroll_type': 'middle',
-			\ 'hide_yaml_meta': 1
-			\ }
-let g:mkdp_markdown_css = ''
-let g:mkdp_highlight_css = ''
-let g:mkdp_port = ''
-let g:mkdp_page_title = '「${name}」'
-
-
+function! BuildComposer(info)
+  if a:info.status != 'unchanged' || a:info.force
+    if has('nvim')
+      !cargo build --release --locked
+    else
+      !cargo build --release --locked --no-default-features --features json-rpc
+    endif
+  endif
+endfunction
+let g:markdown_composer_autostart = 1
 "" ===
 "" === vim-table-mode
 "" ===
-"noremap <LEADER>tm :TableModeToggle<CR>
-""let g:table_mode_disable_mappings = 1
-"let g:table_mode_cell_text_object_i_map = 'k<Bar>'
+noremap <LEADER>tm :TableModeToggle<CR>
+"let g:table_mode_disable_mappings = 1
+let g:table_mode_cell_text_object_i_map = 'k<Bar>'
 "
 "
 "" ===
@@ -810,7 +790,7 @@ let g:mkdp_page_title = '「${name}」'
 " === Bullets.vim
 " ===
 "let g:bullets_set_mappings = 0
-"let g:bullets_enabled_file_types = [
+let g:bullets_enabled_file_types = [
 			\ 'markdown',
 			\ 'text',
 			\ 'gitcommit',
@@ -1223,7 +1203,7 @@ let g:ncm2#matcher = 'substrfuzzy'
 " ===
 colorscheme space-vim-dark
 color space-vim-dark
-"set termguicolors
+set termguicolors
 hi Normal     ctermbg=NONE guibg=NONE
 hi LineNr     ctermbg=NONE guibg=NONE
 hi SignColumn ctermbg=NONE guibg=NONE
