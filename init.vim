@@ -150,6 +150,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'connorholyday/vim-snazzy'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+Plug 'gcmt/wildfire.vim'
 
 call plug#end()
 " json comment highlight
