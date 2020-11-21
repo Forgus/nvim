@@ -151,8 +151,11 @@ Plug 'connorholyday/vim-snazzy'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 Plug 'gcmt/wildfire.vim'
+Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
 
 call plug#end()
+
+filetype plugin on
 " json comment highlight
 autocmd FileType json syntax match Comment +\/\/.\+$+
 
