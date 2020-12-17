@@ -13,6 +13,11 @@ set smartcase
 " ===
 " === Normal Mode
 " ===
+noremap Q :q<CR>
+noremap <C-q> :qa<CR>
+noremap S :w<CR>
+noremap s <nop>
+map R :source $MYVIMRC<CR>
 noremap <silent> J 5j
 noremap <silent> K 5k
 nnoremap Y y$
@@ -40,13 +45,12 @@ cnoremap <C-n> <Down>
 let mapleader= " "
 map <LEADER>rc :e ~/.config/nvim/init.vim<CR>
 map <LEADER>sd :w !sudo tee %<CR>
-map <LEADER>rd :source $MYVIMRC<CR>
 map <LEADER><CR> :nohlsearch<CR>
 " split the screens to up (horizontal), down (horizontal), left (vertical), right (vertical)
-noremap <LEADER>sik :set nosplitbelow<CR>:split<CR>:set splitbelow<CR>
-noremap <LEADER>sj :set splitbelow<CR>:split<CR>
-noremap <LEADER>sh :set nosplitright<CR>:vsplit<CR>:set splitright<CR>
-noremap <LEADER>sl :set splitright<CR>:vsplit<CR>
+noremap sk :set nosplitbelow<CR>:split<CR>:set splitbelow<CR>
+noremap sj :set splitbelow<CR>:split<CR>
+noremap sh :set nosplitright<CR>:vsplit<CR>:set splitright<CR>
+noremap sl :set splitright<CR>:vsplit<CR>
 map <LEADER>k <C-w>k
 map <LEADER>j <C-w>j
 map <LEADER>h <C-w>h
