@@ -14,6 +14,11 @@ exec "nohlsearch"
 set incsearch " 一边输入一边高亮
 set ignorecase " 忽略大小写
 set smartcase " 智能大小写
+set scrolloff=5 " 光标行上下移动范围各缩小5行
+"寻找下一搜索结果，并将其置于屏幕中心
+noremap = nzz               
+"寻找上一搜索结果，并将其置于屏幕中心
+noremap - Nzz
 " ===
 " === Normal Mode
 " ===
@@ -46,6 +51,16 @@ noremap sk :set nosplitbelow<CR>:split<CR>:set splitbelow<CR>
 noremap sj :set splitbelow<CR>:split<CR>
 noremap sh :set nosplitright<CR>:vsplit<CR>:set splitright<CR>
 noremap sl :set splitright<CR>:vsplit<CR>
+"新建标签页
+map tn :tabe<CR>
+"前一标签页
+map th :-tabnext<CR>
+"后一标签页
+map tl :+tabnext<CR>
+" 将当前标签和前一标签交换位置
+noremap tmh :-tabmove<CR>
+" 将当前标签和后一标签交换位置
+noremap tml :+tabmove<CR>
 " ===
 " === Insert Model
 " ===
