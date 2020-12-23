@@ -76,7 +76,7 @@ cnoremap <C-n> <Down>
 " === Leader Mapping
 " ===
 let mapleader= " "
-map <LEADER>rc :e ~/.config/nvim/init.vim<CR>
+map <LEADER>rc :e $MYVIMRC<CR>
 map <LEADER>sd :w !sudo tee %<CR>
 map <LEADER><CR> :nohlsearch<CR>
 map <LEADER>k <C-w>k
