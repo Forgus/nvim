@@ -84,6 +84,17 @@ map <LEADER>j <C-w>j
 map <LEADER>h <C-w>h
 map <LEADER>l <C-w>l
 
+" Compile function
+noremap r :call CompileRunGcc()<CR>
+func! CompileRunGcc()
+	exec "w"
+	if &filetype == 'python'
+		set splitbelow
+		:sp
+		:term python %
+	endif
+endfunc
+
 " Plugin List
 call plug#begin('~/.vim/plugged')
 Plug 'vim-airline/vim-airline'
