@@ -85,7 +85,7 @@ map <LEADER>h <C-w>h
 map <LEADER>l <C-w>l
 
 " Plugin List
-call plug#begin('~/.vim/plugged')
+call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
 Plug 'vim-airline/vim-airline'
 Plug 'connorholyday/vim-snazzy'
 call plug#end()
