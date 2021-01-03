@@ -96,7 +96,7 @@ func! CompileRunGcc()
 endfunc
 
 " Plugin List
-call plug#begin('~/.vim/plugged')
+call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
 Plug 'vim-airline/vim-airline'
 Plug 'connorholyday/vim-snazzy'
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
