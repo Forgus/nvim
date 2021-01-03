@@ -87,11 +87,13 @@ map <LEADER>l <C-w>l
 " Plugin List
 call plug#begin('~/.vim/plugged')
 Plug 'vim-airline/vim-airline'
-Plug 'connorholyday/vim-snazzy'
+"Plug 'connorholyday/vim-snazzy'
+Plug 'liuchengxu/space-vim-theme'
 call plug#end()
+colorscheme space_vim_theme
 "==================      snazzy config 	    =====================      
-color snazzy
-let g:SnazzyTransparent = 1
-let g:lightline = {
-\ 'colorscheme': 'snazzy',
-\ }
+"color snazzy
+"let g:SnazzyTransparent = 1
+"let g:lightline = {
+"\ 'colorscheme': 'snazzy',
+"\ }
