@@ -95,6 +95,30 @@ func! CompileRunGcc()
 	endif
 endfunc
 
+" open new split panes to right and below
+set splitright
+set splitbelow
+" turn terminal to normal mode with escape
+tnoremap <Esc> <C-\><C-n>
+" start terminal in insert mode
+au BufEnter * if &buftype == 'terminal' | :startinsert | endif
+" open terminal on ctrl+n
+function! OpenTerminal()
+  split term://bash
+  resize 10
+endfunction
+nnoremap <c-n> :call OpenTerminal()<CR>
+
+" use alt+hjkl to move between split/vsplit panels
+tnoremap <LEADER>ph <C-\><C-n><C-w>h
+tnoremap <LEADER>pj <C-\><C-n><C-w>j
+tnoremap <LEADER>pk <C-\><C-n><C-w>k
+tnoremap <LEADER>pl <C-\><C-n><C-w>l
+nnoremap <LEADER>ph <C-w>h
+nnoremap <LEADER>pj <C-w>j
+nnoremap <LEADER>pk <C-w>k
+nnoremap <LEADER>pl <C-w>l
+
 " Plugin List
 call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
 Plug 'vim-airline/vim-airline'
@@ -103,7 +127,18 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'rakr/vim-one'
+Plug 'scrooloose/nerdtree'
+Plug 'ryanoasis/vim-devicons'
 call plug#end()
+
+let g:NERDTreeShowHidden = 1
+let g:NERDTreeMinimalUI = 1
+let g:NERDTreeIgnore = []
+let g:NERDTreeStatusline = ''
+" Automaticaly close nvim if NERDTree is only thing left open
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" Toggle
+nnoremap <silent> tt :NERDTreeToggle<CR>
 "==================      vim-one config 	    =====================      
 colorscheme one
 set background=dark
