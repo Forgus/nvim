@@ -87,11 +87,10 @@ map <LEADER>l <C-w>l
 " Plugin List
 call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
 Plug 'vim-airline/vim-airline'
-Plug 'connorholyday/vim-snazzy'
+Plug 'rakr/vim-one'
 call plug#end()
-"==================      snazzy config 	    =====================      
-color snazzy
-let g:SnazzyTransparent = 1
-let g:lightline = {
-\ 'colorscheme': 'snazzy',
-\ }
+"==================      vim-one config 	    =====================      
+colorscheme one
+set background=dark
+let g:airline_theme='one'
+set termguicolors
