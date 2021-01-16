@@ -72,6 +72,14 @@ cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
+function! SetupCommandAbbrs(from, to)
+  exec 'cnoreabbrev <expr> '.a:from
+        \ .' ((getcmdtype() ==# ":" && getcmdline() ==# "'.a:from.'")'
+        \ .'? ("'.a:to.'") : ("'.a:from.'"))'
+endfunction
+
+" Use C to open coc config
+call SetupCommandAbbrs('C', 'CocConfig')
 " ===
 " === Leader Mapping
 " ===
@@ -83,6 +91,9 @@ map <LEADER>k <C-w>k
 map <LEADER>j <C-w>j
 map <LEADER>h <C-w>h
 map <LEADER>l <C-w>l
+map <LEADER>ff :Ranger<CR>
+map <LEADER>fn :RangerNewTab<CR>
+
 
 noremap <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>c4l
 
@@ -131,12 +142,18 @@ Plug 'honza/vim-snippets'
 Plug 'rakr/vim-one'
 Plug 'scrooloose/nerdtree'
 Plug 'ryanoasis/vim-devicons'
+Plug 'francoiscabrol/ranger.vim'
+Plug 'rbgrouleff/bclose.vim'
 call plug#end()
 
 let g:NERDTreeShowHidden = 1
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeIgnore = []
 let g:NERDTreeStatusline = ''
+
+let g:ranger_map_keys = 0
+let g:NERDTreeHijackNetrw = 0 
+let g:ranger_replace_netrw = 1 
 " Automaticaly close nvim if NERDTree is only thing left open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " Toggle
@@ -146,6 +163,11 @@ colorscheme one
 set background=dark
 let g:airline_theme='one'
 set termguicolors
+let g:airline#extensions#coc#enabled = 1
+let airline#extensions#coc#error_symbol = 'E:'
+let airline#extensions#coc#warning_symbol = 'W:'
+let airline#extensions#coc#stl_format_err = '%E{[%e(#%fe)]}'
+let airline#extensions#coc#stl_format_warn = '%W{[%w(#%fw)]}'
 "==================      coc config      =====================      
 " TextEdit might fail if hidden is not set.
 set hidden
@@ -280,3 +302,4 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+autocmd FileType json syntax match Comment +\/\/.\+$+
