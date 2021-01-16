@@ -95,7 +95,9 @@ map <LEADER>ff :Ranger<CR>
 map <LEADER>fn :RangerNewTab<CR>
 
 
+
 noremap <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>c4l
+noremap <silent> <LEADER>y :<C-u>CocList -A --normal yank<CR>
 
 " Compile function
 noremap r :call CompileRunGcc()<CR>
