@@ -137,7 +137,6 @@ call plug#begin('$XDG_CONFIG_HOME/plugged')
 Plug 'vim-airline/vim-airline'
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-"Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'rakr/vim-one'
 Plug 'scrooloose/nerdtree'
