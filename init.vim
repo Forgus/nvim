@@ -84,6 +84,8 @@ map <LEADER>j <C-w>j
 map <LEADER>h <C-w>h
 map <LEADER>l <C-w>l
 
+noremap <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>c4l
+
 " Compile function
 noremap r :call CompileRunGcc()<CR>
 func! CompileRunGcc()
@@ -120,7 +122,7 @@ nnoremap <LEADER>pk <C-w>k
 nnoremap <LEADER>pl <C-w>l
 
 " Plugin List
-call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
+call plug#begin('$XDG_CONFIG_HOME/plugged')
 Plug 'vim-airline/vim-airline'
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
