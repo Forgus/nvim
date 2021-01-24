@@ -61,6 +61,7 @@ map tl :+tabnext<CR>
 noremap tmh :-tabmove<CR>
 " 将当前标签和后一标签交换位置
 noremap tml :+tabmove<CR>
+nmap <C-s> <Plug>MarkdownPreview
 " ===
 " === Insert Model
 " ===
@@ -107,6 +108,8 @@ func! CompileRunGcc()
 		set splitbelow
 		:sp
 		:term python %
+	elseif &filetype == 'markdown'
+		exec "MarkdownPreview"
 	endif
 endfunc
 
@@ -145,8 +148,10 @@ Plug 'scrooloose/nerdtree'
 Plug 'ryanoasis/vim-devicons'
 Plug 'francoiscabrol/ranger.vim'
 Plug 'rbgrouleff/bclose.vim'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 call plug#end()
 
+" ================ nerdtree config ===================
 let g:NERDTreeShowHidden = 1
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeIgnore = []
