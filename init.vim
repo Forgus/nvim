@@ -61,7 +61,6 @@ map tl :+tabnext<CR>
 noremap tmh :-tabmove<CR>
 " 将当前标签和后一标签交换位置
 noremap tml :+tabmove<CR>
-nmap <C-s> <Plug>MarkdownPreview
 " ===
 " === Insert Model
 " ===
@@ -94,6 +93,10 @@ map <LEADER>h <C-w>h
 map <LEADER>l <C-w>l
 map <LEADER>ff :Ranger<CR>
 map <LEADER>fn :RangerNewTab<CR>
+map <LEADER>pi :PlugInstall<CR>
+map <LEADER>mp :MarkdownPreview<CR>
+"nmap <LEADER>wn <Plug>VimwikiNextLink
+"nmap <LEADER>wp <Plug>VimwikiPrevLink
 
 
 
@@ -149,7 +152,14 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'francoiscabrol/ranger.vim'
 Plug 'rbgrouleff/bclose.vim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
+"Plug 'vimwiki/vimwiki'
 call plug#end()
+
+" ================ vimwiki config ===================
+"let g:vimwiki_list = [{'path': '~/vimwiki/','syntax': 'markdown','ext': '.md'}]
+
+" ================ vimwiki config ===================
+let g:mkdp_auto_close = 0
 
 " ================ nerdtree config ===================
 let g:NERDTreeShowHidden = 1
