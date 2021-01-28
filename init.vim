@@ -95,6 +95,7 @@ map <LEADER>ff :Ranger<CR>
 map <LEADER>fn :RangerNewTab<CR>
 map <LEADER>pi :PlugInstall<CR>
 map <LEADER>mp :MarkdownPreview<CR>
+map <LEADER>mg :Goyo<CR>
 "nmap <LEADER>wn <Plug>VimwikiNextLink
 "nmap <LEADER>wp <Plug>VimwikiPrevLink
 
@@ -152,14 +153,27 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'francoiscabrol/ranger.vim'
 Plug 'rbgrouleff/bclose.vim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
+Plug 'godlygeek/tabular'
+Plug 'elzr/vim-json'
+Plug 'plasticboy/vim-markdown'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
 "Plug 'vimwiki/vimwiki'
 call plug#end()
 
 " ================ vimwiki config ===================
 "let g:vimwiki_list = [{'path': '~/vimwiki/','syntax': 'markdown','ext': '.md'}]
 
-" ================ vimwiki config ===================
+" ================ markdown-preview config ===================
 let g:mkdp_auto_close = 0
+" ================ vim-markdown config ==================
+let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_conceal = 0
+let g:tex_conceal = ""
+let g:vim_markdown_math = 1
+let g:vim_markdown_frontmatter = 1  " for YAML format
+let g:vim_markdown_toml_frontmatter = 1  " for TOML format
+let g:vim_markdown_json_frontmatter = 1  " for JSON format
 
 " ================ nerdtree config ===================
 let g:NERDTreeShowHidden = 1
@@ -172,6 +186,8 @@ let g:NERDTreeHijackNetrw = 0
 let g:ranger_replace_netrw = 1 
 " Automaticaly close nvim if NERDTree is only thing left open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
 " Toggle
 nnoremap <silent> tt :NERDTreeToggle<CR>
 "==================      vim-one config 	    =====================      
