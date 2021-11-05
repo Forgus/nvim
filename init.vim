@@ -1,4 +1,7 @@
 set nocompatible  
+set tabstop=4
+set shiftwidth=4
+set autoindent
 set encoding=utf-8
 set helplang=cn
 syntax on
@@ -151,14 +154,16 @@ Plug 'rakr/vim-one'
 Plug 'scrooloose/nerdtree'
 Plug 'ryanoasis/vim-devicons'
 Plug 'francoiscabrol/ranger.vim'
-Plug 'rbgrouleff/bclose.vim'
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
+Plug 'https://github.com.cnpmjs.org/rbgrouleff/bclose.vim.git'
+Plug 'https://github.com.cnpmjs.org/iamcco/markdown-preview.nvim.git', { 'do': 'cd app && yarn install'  }
 Plug 'godlygeek/tabular'
 Plug 'elzr/vim-json'
-Plug 'plasticboy/vim-markdown'
+Plug 'https://github.com.cnpmjs.org/plasticboy/vim-markdown.git'
 Plug 'junegunn/goyo.vim'
-Plug 'junegunn/limelight.vim'
+Plug 'https://github.com.cnpmjs.org/junegunn/limelight.vim.git'
 "Plug 'vimwiki/vimwiki'
+" nvim v0.5.0
+Plug 'kdheepak/lazygit.nvim'
 call plug#end()
 
 " ================ vimwiki config ===================
