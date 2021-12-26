@@ -148,6 +148,7 @@ nnoremap <silent> <leader>gg :LazyGit<CR>
 
 " Plugin List
 call plug#begin('$XDG_CONFIG_HOME/plugged')
+Plug 'tversteeg/registers.nvim'
 Plug 'vim-airline/vim-airline'
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
