@@ -1,2 +1,10 @@
--- empty setup using defaults
-require("nvim-tree").setup()
+require("nvim-tree").setup({
+   view = {
+    adaptive_size = false,
+    mappings = {
+       list = {
+         { key = "-", action = "dir_up" },
+       },
+    }
+   }
+})
