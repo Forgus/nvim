@@ -153,6 +153,7 @@ Plug 'nvim-telescope/telescope-fzy-native.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 Plug 'preservim/nerdcommenter'
 Plug 'lukas-reineke/indent-blankline.nvim'
+Plug 'sindrets/diffview.nvim', {'branch': 'main'}
 
 Plug 'tversteeg/registers.nvim'
 Plug 'vim-airline/vim-airline'
