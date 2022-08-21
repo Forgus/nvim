@@ -154,6 +154,7 @@ Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 Plug 'preservim/nerdcommenter'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'sindrets/diffview.nvim', {'branch': 'main'}
+Plug 'jdhao/better-escape.vim'
 
 Plug 'tversteeg/registers.nvim'
 Plug 'vim-airline/vim-airline'
