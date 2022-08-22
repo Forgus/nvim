@@ -1,5 +1,30 @@
 {
+	"languageserver": {
+		"dockerfile": {
+			"command": "docker-langserver",
+			"filetypes": [
+				"dockerfile"
+			],
+			"args": [
+				"--stdio"
+			]
+		}
+	},
+	"java.configuration.runtimes": [
+		{
+			"name": "JavaSE-15",
+			"path": "C:/Program Files/Java/jdk-15.0.2"
+		},
+		{
+			"name": "JavaSE-1.8",
+			"path": "C:/Program Files/Java/jdk1.8.0_281",
+			"default": true
+		}
+	],
+	"java.home": "C:/Program Files/Java/jdk-15.0.2",
 	"coc.preferences.formatOnType": true,
-	"coc.preferences.formatOnSaveFiletypes":["python","json"]
-
+	"coc.preferences.formatOnSaveFiletypes": [
+		"python",
+		"json"
+	]
 }

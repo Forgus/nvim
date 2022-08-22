@@ -1,4 +1,4 @@
-" Plugin List
+" Plugin Lis"t
 call plug#begin('$XDG_CONFIG_HOME/plugged')
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-lua/plenary.nvim'
@@ -10,6 +10,7 @@ Plug 'preservim/nerdcommenter'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'sindrets/diffview.nvim', {'branch': 'main'}
 Plug 'jdhao/better-escape.vim'
+Plug 'akinsho/toggleterm.nvim', {'tag' : 'v2.*'}
 
 Plug 'tversteeg/registers.nvim'
 Plug 'vim-airline/vim-airline'
@@ -30,6 +31,9 @@ Plug 'junegunn/limelight.vim'
 Plug 'kdheepak/lazygit.nvim'
 call plug#end()
 
+" =============== toggleterm config ==================
+luafile $XDG_CONFIG_HOME/nvim/toggleterm.lua
+set hidden
 " =============== nvim-treesitter ==================
 luafile $XDG_CONFIG_HOME/nvim/nvim-treesitter.lua
 " =============== nvim-tree ==================
@@ -120,7 +124,7 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 " Use K to show documentation in preview window.
-nnoremap <silent> <leader>? :call ShowDocumentation()<CR>
+nnoremap <silent> ? :call ShowDocumentation()<CR>
 
 function! ShowDocumentation()
   if CocAction('hasProvider', 'hover')
@@ -219,12 +223,14 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 "================== normal config =======================
+"打开vim运行nohlsearch，取消高亮
+exec "nohlsearch"
+syntax on
 set tabstop=4
 set shiftwidth=4
 set autoindent
 set encoding=utf-8
 set helplang=cn
-syntax on
 set number
 set relativenumber
 set cursorline  " 显示光标所在行
@@ -232,8 +238,6 @@ set wrap " 自动换行
 set showcmd  " 显示输入信息
 set wildmenu " 显示补全提示
 set hlsearch " 高亮搜索结果
-"打开vim运行nohlsearch，取消高亮
-exec "nohlsearch"
 set incsearch " 一边输入一边高亮
 set ignorecase " 忽略大小写
 set smartcase " 智能大小写
@@ -326,41 +330,41 @@ noremap <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>c4l
 "noremap <silent> <LEADER>y :<C-u>CocList -A --normal yank<CR>
 
 " Compile function
-noremap r :call CompileRunGcc()<CR>
-func! CompileRunGcc()
-	exec "w"
-	if &filetype == 'python'
-		set splitbelow
-		:sp
-		:term python %
-	elseif &filetype == 'markdown'
-		exec "MarkdownPreview"
-	endif
-endfunc
+"noremap r :call CompileRunGcc()<CR>
+"func! CompileRunGcc()
+	"exec "w"
+	"if &filetype == 'python'
+		"set splitbelow
+		":sp
+		":term python %
+	"elseif &filetype == 'markdown'
+		"exec "MarkdownPreview"
+	"endif
+"endfunc
 
 " open new split panes to right and below
 set splitright
 set splitbelow
 " turn terminal to normal mode with escape
-tnoremap <Esc> <C-\><C-n>
+"tnoremap <Esc> <C-\><C-n>
 " start terminal in insert mode
-au BufEnter * if &buftype == 'terminal' | :startinsert | endif
+"au BufEnter * if &buftype == 'terminal' | :startinsert | endif
 " open terminal on ctrl+n
-function! OpenTerminal()
-  split term://bash
-  resize 10
-endfunction
-nnoremap <c-n> :call OpenTerminal()<CR>
+"function! OpenTerminal()
+  "split term://bash
+  "resize 10
+"endfunction
+"nnoremap <c-n> :call OpenTerminal()<CR>
 
 " use alt+hjkl to move between split/vsplit panels
-tnoremap <LEADER>ph <C-\><C-n><C-w>h
-tnoremap <LEADER>pj <C-\><C-n><C-w>j
-tnoremap <LEADER>pk <C-\><C-n><C-w>k
-tnoremap <LEADER>pl <C-\><C-n><C-w>l
-nnoremap <LEADER>ph <C-w>h
-nnoremap <LEADER>pj <C-w>j
-nnoremap <LEADER>pk <C-w>k
-nnoremap <LEADER>pl <C-w>l
+"tnoremap <LEADER>ph <C-\><C-n><C-w>h
+"tnoremap <LEADER>pj <C-\><C-n><C-w>j
+"tnoremap <LEADER>pk <C-\><C-n><C-w>k
+"tnoremap <LEADER>pl <C-\><C-n><C-w>l
+"nnoremap <LEADER>ph <C-w>h
+"nnoremap <LEADER>pj <C-w>j
+"nnoremap <LEADER>pk <C-w>k
+"nnoremap <LEADER>pl <C-w>l
 
 nnoremap <silent> <leader>gg :LazyGit<CR>
 
