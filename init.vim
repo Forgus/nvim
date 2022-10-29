@@ -153,13 +153,13 @@ Plug 'rakr/vim-one'
 Plug 'scrooloose/nerdtree'
 Plug 'ryanoasis/vim-devicons'
 Plug 'francoiscabrol/ranger.vim'
-Plug 'https://github.com.cnpmjs.org/rbgrouleff/bclose.vim.git'
-Plug 'https://github.com.cnpmjs.org/iamcco/markdown-preview.nvim.git', { 'do': 'cd app && yarn install'  }
+Plug 'rbgrouleff/bclose.vim'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'godlygeek/tabular'
 Plug 'elzr/vim-json'
-Plug 'https://github.com.cnpmjs.org/plasticboy/vim-markdown.git'
+Plug 'plasticboy/vim-markdown'
 Plug 'junegunn/goyo.vim'
-Plug 'https://github.com.cnpmjs.org/junegunn/limelight.vim.git'
+Plug 'junegunn/limelight.vim'
 "Plug 'vimwiki/vimwiki'
 " nvim v0.5.0
 Plug 'kdheepak/lazygit.nvim'
